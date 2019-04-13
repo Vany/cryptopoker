@@ -1,0 +1,1 @@
+{"rustc":12974919900058074842,"features":"","target":0,"profile":0,"path":0,"deps":[["proc-macro2 v0.4.27","build_script_build",17668448236352970799]],"local":[{"MtimeBased":[[1555166934,514945813],"/home/nikita/cryptopoker/backend/target/wasm32-unknown-unknown/debug/build/proc-macro2-299dfdf9007c580f/output"]}],"rustflags":[],"metadata":0}
