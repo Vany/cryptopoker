@@ -1,0 +1,13 @@
+[package]
+name = "hello-world"
+version = "0.1.0"
+authors = ["vany <ivan@serezhkin.com>"]
+edition = "2018"
+
+[lib]
+name = "cryptopoker"
+path = "src/poker.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+fluence = {version = "0.1.3"}
