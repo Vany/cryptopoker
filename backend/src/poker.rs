@@ -18,15 +18,18 @@ fn dispatch(input: String) -> String {
     let value: Value = serde_json::from_str(input.as_str()).expect("Cnt' parse json");
     let request: Request = serde_json::from_value(value.clone()).expect("Can't parse json into Request");
   
-    match request.method.as_ref() {
+    let ret = match request.method.as_ref() {
         "GetQueue" => {
-            "[]".to_string()
+            "[]"
         },
         "SendTo" => {
-            "\"OK\"".to_string()
+            "\"OK\""
         },
         "CheckInbox" => {
-            "[]".to_string()
+            "[]"
         },
-  }
+        _ => "{\"error\":true}"
+  };
+
+  ret.to_string()
 }
