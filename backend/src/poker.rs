@@ -1,6 +1,32 @@
 use fluence::sdk::*;
+use log::info;
+use serde_json::{Value};
+use serde::{Deserialize, Serialize};
 
-#[invocation_handler]
-fn entry(name: String) -> String {
-    format!("Hello, world! From user {}", name)
+fn init() {
+    logger::WasmLogger::init_with_level(log::Level::Info).unwrap();
+    info!("new session of poker table started");
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Request {
+    pub method: String,
+}
+
+#[invocation_handler(init_fn=init)]
+fn dispatch(input: String) -> String {
+    let value: Value = serde_json::from_str(input.as_str()).expect("Cnt' parse json");
+    let request: Request = serde_json::from_value(value.clone()).expect("Can't parse json into Request");
+  
+    match request.method.as_ref() {
+        "GetQueue" => {
+            "[]".to_string()
+        },
+        "SendTo" => {
+            "\"OK\"".to_string()
+        },
+        "CheckInbox" => {
+            "[]".to_string()
+        },
+  }
 }
