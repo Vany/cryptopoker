@@ -28,6 +28,7 @@
   "dependencies": {
     "@types/react": "^16.8.11",
     "@types/react-dom": "^16.8.3",
+    "@types/web3": "^1.0.18",
     "file-loader": "^3.0.1",
     "fluence": "0.1.26",
     "react": "^16.8.6",

@@ -28,8 +28,14 @@ body {
   .nameInput {
     margin-top: 50px;
     height:50px;
-    border-radius: 10px;
+    border-radius: 20px;
     border: 4px double red;
+
+    input[type=text]{
+      width: 99.5%;
+      height: 42px;
+      border-radius: 20px;
+    }
 
   }
 
@@ -47,6 +53,12 @@ body {
       height:50px;
       border: 4px double red;
       border-radius: 0 0 20px 20px;
+
+      input[type=text]{
+        width: 99.5%;
+        height: 42px;
+        border-radius: 0 0 20px 20px;
+      }
     }
   }
 }

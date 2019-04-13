@@ -1,3 +1,4 @@
+backend/target
 client/node_modules
 client/yarn.lock
 .idea
