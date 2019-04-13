@@ -22,8 +22,8 @@ lazy_static! {
 }
 
 unsafe fn init() {
-    let mut G = GAME.lock().expect("Lock Game");
-    G.players_num = 3;
+    let mut g = GAME.lock().expect("Lock Game");
+    g.players_num = 3;
     logger::WasmLogger::init_with_level(log::Level::Info).unwrap();
     info!("new session of poker table started");
 }
@@ -38,25 +38,25 @@ fn dispatch(input: String) -> String {
     let value: Value = serde_json::from_str(input.as_str()).expect("Cnt' parse json");
     let request: Request = serde_json::from_value(value.clone()).expect("Can't parse json into Request");
 
-    let G = GAME.lock().expect("Lock Game");
+    let g = GAME.lock().expect("Lock Game");
 
-    let ret: &str = match request.method.as_ref() {
+    let ret: String = match request.method.as_ref() {
         "GetPlayerNum" => {
-            //let pnum = G.players_num;
-            //serde_json::to_string(&pnum).expect("omfg").as_ref()
-            ""
+            let pnum = g.players_num;
+            let ret: String = serde_json::to_string(&pnum).unwrap();
+            ret
         },
         "GetQueue" => {
-            "[]"
+            "[]".to_string()
         },
         "SendTo" => {
-            "\"OK\""
+            "\"OK\"".to_string()
         },
         "CheckInbox" => {
-            "[]"
+            "[]".to_string()
         },
-        _ => "{\"error\":true}"
+        _ => "{\"error\":true}".to_string()
   };
 
-  ret.to_string()
+  ret
 }
